@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="login-container">
+        <img src="assets/what-movie-should-I-watch-quiz-768x432.jpeg" alt="Logo" class="logo">
+        <h2>Login</h2>
+        <form id="login-form" action="/home.html" method="post">       
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+            <button type="button" class="btn-signup" onclick="location.href='/sign-up-page'">Sign Up</button>
+        </form>
+    </div>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
