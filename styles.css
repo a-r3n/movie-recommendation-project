@@ -1,0 +1,5 @@
+  .carousel img {
+    width: 100%; /* Make images fill the container width */
+    max-width: 1200px; /* Set maximum width to 1200px */
+    height: auto; /* Maintain aspect ratio */
+  }
