@@ -9,24 +9,29 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  
-document.querySelector('#login-form').addEventListener('submit', (e) => {
-  e.preventDefault();
+firebase.initializeApp(firebaseConfig);
 
-  // Get user info
-  const email = document.querySelector('#username').value;
-  const password = document.querySelector('#password').value;
+// Function to log in
+function login() {
+  var userEmail = document.getElementById("username").value;
+  var userPass = document.getElementById("password").value;
 
-  // Log the user in
-  auth.signInWithEmailAndPassword(email, password)
-    .then((cred) => {
-      console.log('User logged in:', cred.user);
-      // Redirect to another page or update the UI
-    })
-    .catch((err) => {
-      console.error(err);
-      alert('Error during login: ' + err.message);
-    });
+  firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
+  .then((userCredential) => {
+      // Signed in 
+      var user = userCredential.user;
+      // You can redirect the user to a different page here
+      window.location.href = '/index-interface.html'; 
+  })
+  .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      document.getElementById("login-error").innerHTML = errorMessage;
+  });
+}
+
+// Prevent the form from submitting normally
+document.getElementById("login-form").addEventListener("submit", function(event){
+  event.preventDefault();
+  login();
 });

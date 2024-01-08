@@ -8,7 +8,7 @@
     <div class="login-container">
         <img src="assets/what-movie-should-I-watch-quiz-768x432.jpeg" alt="Logo" class="logo">
         <h2>Login</h2>
-        <form id="login-form" action="/home.html" method="post">       
+        <form id="login-form" action="/index-interface.html" method="post">       
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
@@ -18,7 +18,8 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn-login">Login</button>
-            <button type="button" class="btn-signup" onclick="location.href='/sign-up-page'">Sign Up</button>
+            <button type="button" class="btn-signup" onclick="location.href="/index-interface.html">Sign Up</button>
+            <div id="login-error" style="color:red;"></div>
         </form>
     </div>
     <!-- Firebase App is always required and must be first -->
