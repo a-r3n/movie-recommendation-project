@@ -24,6 +24,17 @@ document.addEventListener('DOMContentLoaded', function () {
     selectElement.appendChild(option);
   });
 
+  // Initially hide the carousel and show the prompt message
+  var carouselContainer = document.querySelector('.slideshow');
+  var promptMessage = document.createElement('p');
+  promptMessage.id = 'prompt-message';
+  promptMessage.textContent = 'Select a genre to see our movie recommendations';
+  carouselContainer.appendChild(promptMessage);
+
+  // Hide the carousel initially
+  var carousel = document.querySelector('.carousel');
+  carousel.style.display = 'none';
+
   // Initialize the carousel
   var carouselElements = document.querySelectorAll('.carousel');
   var carouselOptions = {
@@ -34,6 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Listen for genre selection changes
   selectElement.addEventListener('change', function () {
     var selectedGenreId = this.value;
+
+    // Show the carousel and hide the prompt message
+    carousel.style.display = 'block';
+    promptMessage.style.display = 'none';
+
     updateCarousel(selectedGenreId);
   });
 
@@ -50,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to populate carousel with movie data
   function populateCarousel(movies) {
-    var carousel = document.querySelector('.carousel');
     carousel.innerHTML = ''; // Clear existing items
 
     movies.forEach(movie => {
