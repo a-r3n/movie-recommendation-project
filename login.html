@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" href="assets/style-login.css">
     <title>Movie Recommendations Login Page</title>
 </head>
+
 <body>
     <div class="login-container">
-        <img src="assets/what-movie-should-I-watch-quiz-768x432.jpeg" alt="Logo" class="logo">
+        <center>
+            <img src="assets/what-movie-should-I-watch-quiz-768x432.jpeg" alt="Logo" class="logo">
+        </center>
         <h2>Login</h2>
-        <form id="login-form" method="post">       
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn-login">Login</button>
-            <button type="button" class="btn-signup" onclick="location.href='/index-interface.html'">Sign Up</button>
-            <div id="login-error" style="color:red;"></div>
-        </form>
+        <center><h1 id="free"></h1></center>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div id="button_container">
+            <button type="submit" class="btn-login" onclick="login()">Login</button>
+            <button type="button" class="btn-signup" onclick="register()">Register</button>
+        </div>
+        <div id="login-error" style="color:red;"></div>
     </div>
 
     <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 
     <!-- Custom Script -->
     <script src="assets/script-login.js"></script>
 </body>
+
 </html>
