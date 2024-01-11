@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to update carousel with movies from the selected genre
   function updateCarousel(genreId) {
-    // API call to MovieDB
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=4db37776638550cb726212c6dc2ebd11&with_genres=${genreId}&sort_by=vote_average.desc`)
+    // API call to MovieDB, filtered for English language movies
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=4db37776638550cb726212c6dc2ebd11&with_genres=${genreId}&language=en-US&sort_by=vote_average.desc`)
       .then(response => response.json())
       .then(data => {
         populateCarousel(data.results);
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to show movie details
   function showMovieDetails(movieId) {
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=4db37776638550cb726212c6dc2ebd11`)
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=4db37776638550cb726212c6dc2ebd11&language=en-US`)
       .then(response => response.json())
       .then(movie => {
         var detailsContainer = document.getElementById('movie-details');
@@ -96,8 +96,53 @@ document.addEventListener('DOMContentLoaded', function () {
           <p>${movie.overview}</p>
           <!-- Add more movie details here as needed -->
         `;
-        // Additional styling or actions
+        addToShortlist(movie); // Add movie to shortlist
+        displayShortlist(); // Update the shortlist display
       })
       .catch(error => console.error('Error:', error));
   }
-});
+
+  // Function to add movie to shortlist in local storage
+  function addToShortlist(movie) {
+    let shortlist = JSON.parse(localStorage.getItem('shortlist')) || [];
+    if (!shortlist.some(m => m.id === movie.id)) {
+      shortlist.push(movie);
+      localStorage.setItem('shortlist', JSON.stringify(shortlist));
+    }
+  }
+
+  // Function to display shortlist
+  function displayShortlist() {
+    let shortlist = JSON.parse(localStorage.getItem('shortlist')) || [];
+    let shortlistContainer = document.getElementById('shortlist');
+    shortlistContainer.innerHTML = '<h4>Your Shortlist</h4>';
+    shortlist.forEach(movie => {
+      let movieElem = document.createElement('p');
+      movieElem.textContent = movie.title;
+      movieElem.onclick = function () {
+        showMovieDetails(movie.id);
+      };
+      shortlistContainer.appendChild(movieElem);
+    });
+  }
+  
+    // Function to clear shortlist
+    function clearShortlist() {
+      console.log("Clear shortlist button clicked."); // Debugging log
+      localStorage.removeItem('shortlist');
+      displayShortlist(); // Update the shortlist display
+    }
+  
+    // Set up the event listener for the clear shortlist button
+    var clearButton = document.getElementById('clear-shortlist');
+    if (clearButton) {
+      clearButton.addEventListener('click', clearShortlist);
+      console.log("Event listener attached to clear shortlist button."); // Debugging log
+    } else {
+      console.error('Clear shortlist button not found');
+    }
+  
+    // Call displayShortlist on page load to show existing shortlist
+    displayShortlist();
+  });
+  

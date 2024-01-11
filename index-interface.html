@@ -14,8 +14,9 @@
     <div class="selection-interface"></div>
 
       <div class="slideshow">
-        <h3>What's Trending</h3>
-
+        <h2> What movie should I watch? </h2>
+        <h3>Find out what's trending. Select your genre: </h3>
+        
         <select id="movie-preferences" class="browser-default">
           <option value="" disabled selected>Select a Genre</option>
         </select> 
@@ -36,20 +37,19 @@
   <!-- Movie details will be dynamically inserted here -->
   </div>
 
+<!-- Container for shortlisted movies -->
+<div id="shortlist" class="shortlist">
+  <h4>Your Shortlist</h4>
+  <!-- Shortlisted movies will be dynamically inserted here -->
+  <button id="clear-shortlist" style="background-color: red; color: white; width: 200px; height: 50px;">Clear Shortlist</button>
+</div>
+
     </div>
     
   </form>
   
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-  <!-- Custom Script -->
   <script src="./script.js"></script>
-
 </body>
 </html>
