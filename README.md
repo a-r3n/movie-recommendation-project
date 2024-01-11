@@ -44,7 +44,9 @@ There were four contributors to this project:
 
 There were two API's used in the making of this project: 
 - The Movie Database API: https://www.themoviedb.org/
-- Firebase by Google: https://firebase.google.com/ 
+- Firebase by Google: https://firebase.google.com/
+
+Additional references: ChatGPT
 
 ## License
 
