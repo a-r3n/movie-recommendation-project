@@ -127,3 +127,10 @@ h3 {
 #clear-shortlist:hover {
   background-color: #f40612; /* Darker shade of red on hover */
 }
+
+#clear-shortlist-btn {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px 10px;
+  cursor: pointer;
+}
