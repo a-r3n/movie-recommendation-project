@@ -95,7 +95,7 @@ function login() {
       freeField.innerHTML = 'User Logged In!!'
 
       // Redirecting to movie site after logging in
-      window.location.href = "http://127.0.0.1:5500/index-interface.html"
+      window.location.href = "https://a-r3n.github.io/movie-recommendation-project/index-interface.html"
 
     })
     .catch(function (error) {
